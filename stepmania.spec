@@ -24,6 +24,7 @@ Patch5:		StepMania-3.9-eventmask.patch
 Patch6:		StepMania-3.9-extraqual.patch
 Patch7:		StepMania-3.9-replace-this.patch
 
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:  ffmpeg-devel	
 BuildRequires:  oggvorbis-devel
