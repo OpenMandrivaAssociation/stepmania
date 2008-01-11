@@ -80,13 +80,14 @@ mv $RPM_BUILD_ROOT%{_gamesbindir}/GtkModule.so $RPM_BUILD_ROOT%{_libdir}/%{distn
 chmod 0644 $RPM_BUILD_ROOT%{_libdir}/%{distname}/GtkModule.so
 
 install -d -m 0755 -p $RPM_BUILD_ROOT%{_menudir}
-cat > $RPM_BUILD_ROOT%{_menudir}/%{name} <<EOF
-?package(%name):\
-command="soundwrapper %{_gamesbindir}/stepmania"\
-title="StepMania"\
-longtitle="A rythm game"\
-needs="x11" icon="%{distname}.xpm" \
-section="More Applications/Games/Arcade"
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=soundwrapper %{_gamesbindir}/stepmania
+Name=StepMania
+Comment=A rythm game
+Icon=%{distname}
+Categories=Game;ArcadeGame;
 EOF
 
 install -d %{buildroot}%{_datadir}/applications
@@ -116,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_gamesbindir}/%{name}
 %{_libdir}/%{distname}/GtkModule.so
 %{_iconsdir}/%{distname}.xpm
-%{_menudir}/*
+%{_datadir}/applications/mandriva-*.desktop
 %{_datadir}/applications/mandriva-%{name}.desktop
 
 
