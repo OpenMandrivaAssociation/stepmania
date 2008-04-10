@@ -59,7 +59,7 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 %patch6 -p1 -b .extraqual
 %patch7 -p1 -b .replace
 %patch8 -p1 -b .gettid
-%patch8 -p1 -b .averror
+%patch9 -p1 -b .averror
 
 %build
 %configure \
