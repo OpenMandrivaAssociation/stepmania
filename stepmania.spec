@@ -1,7 +1,7 @@
 %define	distname	StepMania
 %define	name	stepmania
 %define	version	3.9
-%define release	%mkrel 8
+%define release	%mkrel 9
 
 %define build_mp3 1
 %{?_with_mp3: %global build_mp3 1}
@@ -26,6 +26,7 @@ Patch7:		StepMania-3.9-replace-this.patch
 Patch8:		StepMania-3.9-src-gettid.patch
 Patch9:		StepMania-3.9-src-averror.patch
 Patch10:	StepMania-3.9-src-int64_c.patch
+Patch11:	StepMania-3.9-src-avcodec_namespace.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -62,6 +63,7 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 %patch8 -p1 -b .gettid
 %patch9 -p1 -b .averror
 %patch10 -p1 -b .int64_c
+%patch11 -p1 -b .avcodec_namespace
 
 %build
 %configure \
