@@ -24,6 +24,7 @@ Patch5:		StepMania-3.9-eventmask.patch
 Patch6:		StepMania-3.9-extraqual.patch
 Patch7:		StepMania-3.9-replace-this.patch
 Patch8:		StepMania-3.9-src-gettid.patch
+Patch9:		StepMania-3.9-src-averror.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -58,6 +59,7 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 %patch6 -p1 -b .extraqual
 %patch7 -p1 -b .replace
 %patch8 -p1 -b .gettid
+%patch8 -p1 -b .averror
 
 %build
 %configure \
