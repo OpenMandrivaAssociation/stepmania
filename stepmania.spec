@@ -87,7 +87,7 @@ install -d -m 0755 -p $RPM_BUILD_ROOT%{_libdir}/%{distname}
 mv $RPM_BUILD_ROOT%{_gamesbindir}/GtkModule.so $RPM_BUILD_ROOT%{_libdir}/%{distname}/
 chmod 0644 $RPM_BUILD_ROOT%{_libdir}/%{distname}/GtkModule.so
 
-install -d -m 0755 -p $RPM_BUILD_ROOT%{_menudir}
+install -d -m 0755 -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
 [Desktop Entry]
 Type=Application
