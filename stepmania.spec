@@ -27,6 +27,7 @@ Patch8:		StepMania-3.9-src-gettid.patch
 Patch9:		StepMania-3.9-src-averror.patch
 Patch10:	StepMania-3.9-src-int64_c.patch
 Patch11:	StepMania-3.9-src-avcodec_namespace.patch
+Patch12:	stepmania-3.9-newerffmpeg.diff
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -64,9 +65,11 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 %patch9 -p1 -b .averror
 %patch10 -p1 -b .int64_c
 %patch11 -p1 -b .avcodec_namespace
+%patch12 -p1 -b .ffmpeg
 
 %build
-%configure \
+%configure2_5x \
+  --disable-dependency-tracking \
   --bindir=%{_gamesbindir} \
   --datadir=%{_gamesdatadir} \
 %if %build_mp3
