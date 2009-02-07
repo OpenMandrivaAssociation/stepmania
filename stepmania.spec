@@ -28,7 +28,8 @@ Patch9:		StepMania-3.9-src-averror.patch
 Patch10:	StepMania-3.9-src-int64_c.patch
 Patch11:	StepMania-3.9-src-avcodec_namespace.patch
 Patch12:	stepmania-3.9-newerffmpeg.diff
-
+Patch13:	stepmania-3.9-gcc43.patch
+Patch14:	stepmania-3.9-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:  ffmpeg-devel	
@@ -66,6 +67,8 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 %patch10 -p1 -b .int64_c
 %patch11 -p1 -b .avcodec_namespace
 %patch12 -p1 -b .ffmpeg
+%patch13 -p1 -b .gcc
+%patch14 -p1 -b .str
 
 %build
 %configure2_5x \
@@ -101,18 +104,6 @@ Icon=%{distname}
 Categories=Game;ArcadeGame;
 EOF
 
-install -d %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=StepMania
-Comment=A rythm game
-Exec=soundwrapper %_gamesbindir/%{name}
-Icon=%{distname}
-Terminal=false
-Type=Application
-Categories=Game;ArcadeGame;X-MandrivaLinux-MoreApplications-Games-Arcade;
-EOF
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -133,6 +124,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{distname}/GtkModule.so
 %{_iconsdir}/%{distname}.xpm
 %{_datadir}/applications/mandriva-*.desktop
-%{_datadir}/applications/mandriva-%{name}.desktop
-
-
