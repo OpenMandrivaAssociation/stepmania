@@ -31,8 +31,9 @@ Patch12:	stepmania-3.9-newerffmpeg.diff
 Patch13:	stepmania-3.9-gcc43.patch
 Patch14:	stepmania-3.9-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-
-BuildRequires:  ffmpeg-devel	
+%if %mdkversion < 200910
+BuildRequires:  ffmpeg-devel
+%endif
 BuildRequires:  oggvorbis-devel
 BuildRequires:  jpeg-devel
 BuildRequires:  SDL-devel
