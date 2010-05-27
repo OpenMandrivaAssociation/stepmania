@@ -1,7 +1,7 @@
 %define	distname	StepMania
 %define	name	stepmania
 %define	version	3.9
-%define release	%mkrel 11
+%define release	%mkrel 12
 
 %define build_mp3 1
 %{?_with_mp3: %global build_mp3 1}
@@ -26,6 +26,7 @@ Patch8:		StepMania-3.9-src-gettid.patch
 Patch9:		stepmania-3.9-ffmpeg-all-4.patch
 Patch10:	stepmania-3.9-ffmpeg-headers.patch
 Patch11:	stepmania-3.9-ffmpeg-pixfmt.patch
+Patch12:	stepmania-3.9-select_style.patch
 Patch13:	stepmania-3.9-gcc43.patch
 Patch14:	stepmania-3.9-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -62,6 +63,7 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 %patch9 -p1 -b .ffmpeg-4
 %patch10 -p1 -b .ffmpeg-headers
 %patch11 -p1 -b .ffmpeg-pixfmt
+%patch12 -p1 -b .select-style
 %patch13 -p1 -b .gcc
 %patch14 -p1 -b .str
 
