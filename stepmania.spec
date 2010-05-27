@@ -17,23 +17,19 @@ Group:		Games/Arcade
 Source0:	%{distname}-%{version}-src.tar.bz2
 Patch0:         StepMania-3.9-x86_64-build.patch
 Patch1:		StepMania-3.9-build_crypto.patch
-Patch2:		StepMania-3.9-ffmpeg_4629_4754.patch
 Patch3:		StepMania-3.9-home.patch
 Patch4:		StepMania-3.9-pkgdir.patch
 Patch5:		StepMania-3.9-eventmask.patch
 Patch6:		StepMania-3.9-extraqual.patch
 Patch7:		StepMania-3.9-replace-this.patch
 Patch8:		StepMania-3.9-src-gettid.patch
-Patch9:		StepMania-3.9-src-averror.patch
-Patch10:	StepMania-3.9-src-int64_c.patch
-Patch11:	StepMania-3.9-src-avcodec_namespace.patch
-Patch12:	stepmania-3.9-newerffmpeg.diff
+Patch9:		stepmania-3.9-ffmpeg-all-4.patch
+Patch10:	stepmania-3.9-ffmpeg-headers.patch
+Patch11:	stepmania-3.9-ffmpeg-pixfmt.patch
 Patch13:	stepmania-3.9-gcc43.patch
 Patch14:	stepmania-3.9-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-%if %mdkversion < 200910
 BuildRequires:  ffmpeg-devel
-%endif
 BuildRequires:  oggvorbis-devel
 BuildRequires:  jpeg-devel
 BuildRequires:  SDL-devel
@@ -57,17 +53,15 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 %setup -q -n %{distname}-%{version}-src
 %patch0 -p1 -b .x86_64
 %patch1 -p1 -b .crypto
-%patch2 -p1 -b .ffmpeg_4629_4754
 %patch3 -p1 -b .home
 %patch4 -p1 -b .pkgdir
 %patch5 -p1 -b .eventmask
 %patch6 -p1 -b .extraqual
 %patch7 -p1 -b .replace
 %patch8 -p1 -b .gettid
-%patch9 -p1 -b .averror
-%patch10 -p1 -b .int64_c
-%patch11 -p1 -b .avcodec_namespace
-%patch12 -p1 -b .ffmpeg
+%patch9 -p1 -b .ffmpeg-4
+%patch10 -p1 -b .ffmpeg-headers
+%patch11 -p1 -b .ffmpeg-pixfmt
 %patch13 -p1 -b .gcc
 %patch14 -p1 -b .str
 
