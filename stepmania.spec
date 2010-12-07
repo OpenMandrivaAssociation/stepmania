@@ -1,7 +1,7 @@
 %define	distname	StepMania
 %define	name	stepmania
 %define	version	3.9
-%define release	%mkrel 12
+%define release	%mkrel 13
 
 %define build_mp3 1
 %{?_with_mp3: %global build_mp3 1}
