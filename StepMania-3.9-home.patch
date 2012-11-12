@@ -1,0 +1,32 @@
+--- StepMania-3.9-src/src/RageFileManager.cpp.home	2006-05-14 15:18:09.000000000 +0200
++++ StepMania-3.9-src/src/RageFileManager.cpp	2006-05-14 15:48:44.000000000 +0200
+@@ -6,6 +6,7 @@
+ #include "RageUtil_FileDB.h"
+ #include "RageLog.h"
+ #include "RageThreads.h"
++#include "ProductInfo.h"
+ 
+ #include <cerrno>
+ #if defined(LINUX)
+@@ -154,7 +155,7 @@
+ 	 * scores.  It would need to handle permissions properly. */
+ /*	RageFileManager::Mount( "dir", "/var/lib/games/stepmania", "Data/Profiles" ); */
+ 	
+-	// CString Home = getenv( "HOME" ) + "/" + PRODUCT_NAME;
++	CString Home = getenv( "HOME" );
+ 
+ 	/*
+ 	 * Next: path to write general mutable user data.  If the above path fails (eg.
+@@ -164,10 +165,10 @@
+ 	 * seems wrong to put lots of data (eg. music) in one.  Hmm. 
+ 	 */
+ 	/* XXX: create */
+-/*	RageFileManager::Mount( "dir", Home + "." PRODUCT_NAME, "Data" ); */
++	RageFileManager::Mount( "dir", Home + "/." PRODUCT_NAME, "Data" );
+ 
+ 	/* Next, search ~/StepMania.  This is where users can put music, themes, etc. */
+-	/* RageFileManager::Mount( "dir", Home + PRODUCT_NAME, "" ); */
++	RageFileManager::Mount( "dir", Home + "/" PRODUCT_NAME, "" );
+ 
+ 	/* Search for a directory with "Songs" in it.  Be careful: the CWD is likely to
+ 	 * be ~, and it's possible that some users will have a ~/Songs/ directory that

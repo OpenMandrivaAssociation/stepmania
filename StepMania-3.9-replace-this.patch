@@ -1,0 +1,11 @@
+--- StepMania-3.9-src/src/StdString.h.replace	2005-09-30 04:09:01.000000000 -0400
++++ StepMania-3.9-src/src/StdString.h	2006-12-01 19:47:31.000000000 -0500
+@@ -1087,7 +1087,7 @@
+ 
+ 		while ( (nIdx=this->find(szOld, nIdx)) != MYBASE::npos )
+ 		{
+-			replace(this->begin()+nIdx, this->begin()+nIdx+nOldLen, szRealNew);
++			this->replace(this->begin()+nIdx, this->begin()+nIdx+nOldLen, szRealNew);
+ 			nReplaced++;
+ 			nIdx += nNewLen;
+ 		}

@@ -1,0 +1,45 @@
+--- StepMania-3.9-src/src/arch/LoadingWindow/LoadingWindow_Gtk.cpp.pkgdir	2004-05-16 00:16:39.000000000 +0200
++++ StepMania-3.9-src/src/arch/LoadingWindow/LoadingWindow_Gtk.cpp	2006-05-14 20:33:47.000000000 +0200
+@@ -16,10 +16,17 @@
+ {
+ try {
+ 	ASSERT( Handle == NULL );
+-	
++
++#ifdef PKG_LIB_DIR
++	Handle = dlopen( PKG_LIB_DIR "/" "GtkModule.so", RTLD_NOW );
++	if ( Handle == NULL ) {
++#endif	
+ 	Handle = dlopen( DirOfExecutable + "/" + "GtkModule.so", RTLD_NOW );
+ 	if( Handle == NULL )
+ 		RageException::ThrowNonfatal("dlopen(): %s", dlerror());
++#ifdef PKG_LIB_DIR
++	}
++#endif	
+ 
+ 	Module_Init = (INIT) dlsym(Handle, "Init");
+ 	if( !Module_Init )
+--- StepMania-3.9-src/src/RageFileManager.cpp.pkgdir	2006-05-14 15:48:44.000000000 +0200
++++ StepMania-3.9-src/src/RageFileManager.cpp	2006-05-14 18:42:22.000000000 +0200
+@@ -179,6 +179,10 @@
+ 		Root = DirOfExecutable;
+ 	if( Root == "" && !stat( InitialWorkingDirectory + "/Songs", &st ) && st.st_mode&S_IFDIR )
+ 		Root = InitialWorkingDirectory;
++#ifdef PKG_DATA_DIR
++	if( Root == "" && !stat( PKG_DATA_DIR "/Songs", &st ) && st.st_mode&S_IFDIR )
++		Root = PKG_DATA_DIR;
++#endif
+ 	if( Root == "" )
+ 		RageException::Throw( "Couldn't find \"Songs\"" );
+ 			
+--- StepMania-3.9-src/configure.pkgdir	2005-11-03 16:27:02.000000000 +0100
++++ StepMania-3.9-src/configure	2006-05-14 20:11:51.000000000 +0200
+@@ -9822,7 +9822,7 @@
+ }'
+ fi
+ 
+-DEFS=-DHAVE_CONFIG_H
++DEFS="-DHAVE_CONFIG_H -DPKG_LIB_DIR=\\\"\$(pkglibdir)\\\" -DPKG_DATA_DIR=\\\"\$(pkgdatadir)\\\""
+ 
+ ac_libobjs=
+ ac_ltlibobjs=

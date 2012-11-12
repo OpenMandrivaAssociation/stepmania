@@ -1,0 +1,41 @@
+--- StepMania-3.9-src/src/arch/Threads.orig/Threads.h	2004-09-07 05:05:56.000000000 +0200
++++ StepMania-3.9-src/src/arch/Threads/Threads.h	2006-04-13 22:19:40.000000000 +0200
+@@ -17,7 +17,7 @@
+ 	 * one thread.  (This means that Win32 thread handles are not acceptable as ThreadIds.) */
+ 	virtual uint64_t GetThreadId() const = 0;
+ 
+-	virtual int Wait() = 0;
++	virtual bool Wait() = 0;
+ };
+ 
+ class MutexImpl
+--- StepMania-3.9-src/src/arch/Threads.orig/Threads_Pthreads.cpp	2005-11-03 15:58:52.000000000 +0100
++++ StepMania-3.9-src/src/arch/Threads/Threads_Pthreads.cpp	2006-04-13 22:17:37.000000000 +0200
+@@ -37,14 +37,14 @@
+ 	return threadHandle;
+ }
+ 
+-int ThreadImpl_Pthreads::Wait()
++bool ThreadImpl_Pthreads::Wait()
+ {
+ 	void *val;
+ 	int ret = pthread_join( thread, &val );
+ 	if( ret )
+ 		RageException::Throw( "pthread_join: %s", strerror(errno) );
+ 
+-	return (int) val;
++	return (bool) val;
+ }
+ 
+ ThreadImpl *MakeThisThread()
+--- StepMania-3.9-src/src/arch/Threads.orig/Threads_Pthreads.h	2004-09-07 14:49:49.000000000 +0200
++++ StepMania-3.9-src/src/arch/Threads/Threads_Pthreads.h	2006-04-13 22:18:21.000000000 +0200
+@@ -27,7 +27,7 @@
+ 	void Halt( bool Kill );
+ 	void Resume();
+ 	uint64_t GetThreadId() const;
+-	int Wait();
++	bool Wait();
+ };
+ 
+ class MutexImpl_Pthreads: public MutexImpl

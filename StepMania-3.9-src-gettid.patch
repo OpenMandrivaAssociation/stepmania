@@ -1,0 +1,12 @@
+diff -p -up StepMania-3.9-src/src/archutils/Unix/LinuxThreadHelpers.cpp.gettid StepMania-3.9-src/src/archutils/Unix/LinuxThreadHelpers.cpp
+--- StepMania-3.9-src/src/archutils/Unix/LinuxThreadHelpers.cpp.gettid	2004-10-23 00:23:38.000000000 +0200
++++ StepMania-3.9-src/src/archutils/Unix/LinuxThreadHelpers.cpp	2008-04-10 17:14:48.000000000 +0200
+@@ -29,7 +29,7 @@
+ 
+ static bool g_bUsingNPTL = false;
+ 
+-static _syscall0(pid_t,gettid)
++#define gettid() syscall(__NR_gettid)
+ 
+ #ifndef _CS_GNU_LIBPTHREAD_VERSION
+ #define _CS_GNU_LIBPTHREAD_VERSION 3

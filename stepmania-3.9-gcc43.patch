@@ -1,0 +1,155 @@
+diff --unified --recursive StepMania-3.9-src.orig/src/arch/Lights/LightsDriver_LinuxWeedTech.cpp StepMania-3.9-src/src/arch/Lights/LightsDriver_LinuxWeedTech.cpp
+--- StepMania-3.9-src.orig/src/arch/Lights/LightsDriver_LinuxWeedTech.cpp	2004-07-16 09:45:02.000000000 +0200
++++ StepMania-3.9-src/src/arch/Lights/LightsDriver_LinuxWeedTech.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -6,6 +6,7 @@
+ #include <fcntl.h>
+ #include <termios.h>
+ #include <errno.h>
++#include <string.h>
+ #include "LightsDriver_LinuxWeedTech.h"
+ #include "RageLog.h"
+ 
+diff --unified --recursive StepMania-3.9-src.orig/src/archutils/Unix/CrashHandler.cpp StepMania-3.9-src/src/archutils/Unix/CrashHandler.cpp
+--- StepMania-3.9-src.orig/src/archutils/Unix/CrashHandler.cpp	2005-10-17 03:39:27.000000000 +0200
++++ StepMania-3.9-src/src/archutils/Unix/CrashHandler.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -15,6 +15,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <string.h>
+ 
+ #include "CrashHandler.h"
+ #include "CrashHandlerInternal.h"
+diff --unified --recursive StepMania-3.9-src.orig/src/archutils/Unix/SignalHandler.cpp StepMania-3.9-src/src/archutils/Unix/SignalHandler.cpp
+--- StepMania-3.9-src.orig/src/archutils/Unix/SignalHandler.cpp	2004-05-27 06:57:15.000000000 +0200
++++ StepMania-3.9-src/src/archutils/Unix/SignalHandler.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -13,6 +13,7 @@
+ #include <unistd.h>
+ #include <sys/mman.h>
+ #include <cerrno>
++#include <string.h>
+ 
+ #if defined(DARWIN)
+ extern "C" int sigaltstack( const struct sigaltstack *ss, struct sigaltstack *oss );
+diff --unified --recursive StepMania-3.9-src.orig/src/crypto/CryptBn.cpp StepMania-3.9-src/src/crypto/CryptBn.cpp
+--- StepMania-3.9-src.orig/src/crypto/CryptBn.cpp	2004-06-08 07:30:52.000000000 +0200
++++ StepMania-3.9-src/src/crypto/CryptBn.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -4,6 +4,7 @@
+ 
+ #include "global.h"
+ #include "CryptBn.h"
++#include <string.h>
+ 
+ #if defined(WIN32)
+ #pragma warning (disable : 4244) // conversion from 'int' to 'BignumInt', possible loss of data
+diff --unified --recursive StepMania-3.9-src.orig/src/crypto/CryptMD5.cpp StepMania-3.9-src/src/crypto/CryptMD5.cpp
+--- StepMania-3.9-src.orig/src/crypto/CryptMD5.cpp	2004-06-08 07:30:52.000000000 +0200
++++ StepMania-3.9-src/src/crypto/CryptMD5.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -1,5 +1,6 @@
+ #include "global.h"
+ #include "CryptMD5.h"
++#include <string.h>
+ 
+ /*
+  * MD5 implementation for PuTTY. Written directly from the spec by
+diff --unified --recursive StepMania-3.9-src.orig/src/crypto/CryptRand.cpp StepMania-3.9-src/src/crypto/CryptRand.cpp
+--- StepMania-3.9-src.orig/src/crypto/CryptRand.cpp	2004-06-08 07:30:52.000000000 +0200
++++ StepMania-3.9-src/src/crypto/CryptRand.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -5,6 +5,7 @@
+ #include "global.h"
+ #include "CryptSHA.h"
+ #include "CryptRand.h"
++#include <string.h>
+ 
+ void noise_get_heavy(void (*func) (void *, int));
+ void noise_get_light(void (*func) (void *, int));
+diff --unified --recursive StepMania-3.9-src.orig/src/crypto/CryptSH512.cpp StepMania-3.9-src/src/crypto/CryptSH512.cpp
+--- StepMania-3.9-src.orig/src/crypto/CryptSH512.cpp	2004-06-08 07:30:52.000000000 +0200
++++ StepMania-3.9-src/src/crypto/CryptSH512.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -6,6 +6,7 @@
+ 
+ #include "global.h"
+ #include "CryptSH512.h"
++#include <string.h>
+ 
+ #define BLKSIZE 128
+ 
+diff --unified --recursive StepMania-3.9-src.orig/src/crypto/CryptSHA.cpp StepMania-3.9-src/src/crypto/CryptSHA.cpp
+--- StepMania-3.9-src.orig/src/crypto/CryptSHA.cpp	2004-06-08 07:30:52.000000000 +0200
++++ StepMania-3.9-src/src/crypto/CryptSHA.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -7,6 +7,7 @@
+ 
+ #include "global.h"
+ #include "CryptSHA.h"
++#include <string.h>
+ 
+ /* ----------------------------------------------------------------------
+  * Core SHA algorithm: processes 16-word blocks into a message digest.
+diff --unified --recursive StepMania-3.9-src.orig/src/crypto51/filters.cpp StepMania-3.9-src/src/crypto51/filters.cpp
+--- StepMania-3.9-src.orig/src/crypto51/filters.cpp	2004-05-17 02:59:07.000000000 +0200
++++ StepMania-3.9-src/src/crypto51/filters.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -6,6 +6,7 @@
+ #include "fltrimpl.h"
+ #include "argnames.h"
+ #include <functional>
++#include <memory>
+ 
+ NAMESPACE_BEGIN(CryptoPP)
+ 
+diff --unified --recursive StepMania-3.9-src.orig/src/ezsockets.cpp StepMania-3.9-src/src/ezsockets.cpp
+--- StepMania-3.9-src.orig/src/ezsockets.cpp	2005-10-01 05:32:45.000000000 +0200
++++ StepMania-3.9-src/src/ezsockets.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -17,6 +17,7 @@
+ #include <unistd.h>
+ #include <arpa/inet.h>
+ #include <netdb.h>
++#include <string.h>
+ #endif
+ 
+ EzSockets::EzSockets()
+diff --unified --recursive StepMania-3.9-src.orig/src/InputFilter.cpp StepMania-3.9-src/src/InputFilter.cpp
+--- StepMania-3.9-src.orig/src/InputFilter.cpp	2004-09-10 00:14:33.000000000 +0200
++++ StepMania-3.9-src/src/InputFilter.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -3,6 +3,7 @@
+ #include "RageLog.h"
+ #include "RageInput.h"
+ #include "RageThreads.h"
++#include <string.h>
+ 
+ 
+ InputFilter*	INPUTFILTER = NULL;	// global and accessable from anywhere in our program
+diff --unified --recursive StepMania-3.9-src.orig/src/ModelTypes.h StepMania-3.9-src/src/ModelTypes.h
+--- StepMania-3.9-src.orig/src/ModelTypes.h	2004-08-19 10:29:16.000000000 +0200
++++ StepMania-3.9-src/src/ModelTypes.h	2009-01-10 13:19:53.000000000 +0100
+@@ -6,6 +6,7 @@
+ #define MS_MAX_NAME             32
+ 
+ #include "RageTypes.h"
++#include <string.h>
+ 
+ struct msTriangle
+ {
+diff --unified --recursive StepMania-3.9-src.orig/src/RageUtil.h StepMania-3.9-src/src/RageUtil.h
+--- StepMania-3.9-src.orig/src/RageUtil.h	2004-10-07 19:56:16.000000000 +0200
++++ StepMania-3.9-src/src/RageUtil.h	2009-01-10 13:19:53.000000000 +0100
+@@ -4,6 +4,8 @@
+ #define RAGEUTIL_H
+ 
+ #include <map>
++#include <string.h>
++#include <limits.h>
+ 
+ #define SAFE_DELETE(p)       { if(p) { delete (p);     (p)=NULL; } }
+ #define SAFE_DELETE_ARRAY(p) { if(p) { delete[] (p);   (p)=NULL; } }
+diff --unified --recursive StepMania-3.9-src.orig/src/ScreenOptionsMasterPrefs.cpp StepMania-3.9-src/src/ScreenOptionsMasterPrefs.cpp
+--- StepMania-3.9-src.orig/src/ScreenOptionsMasterPrefs.cpp	2004-09-06 00:10:58.000000000 +0200
++++ StepMania-3.9-src/src/ScreenOptionsMasterPrefs.cpp	2009-01-10 13:19:53.000000000 +0100
+@@ -69,7 +69,7 @@
+ }
+ 
+ template<>
+-static void MoveData( int &sel, bool &opt, bool ToSel )
++void MoveData( int &sel, bool &opt, bool ToSel )
+ {
+ 	if( ToSel )	sel = opt;
+ 	else		opt = !!sel;

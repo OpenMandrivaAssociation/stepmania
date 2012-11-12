@@ -1,0 +1,38 @@
+--- StepMania-3.9-src/src/GameState.h.extraqual	2004-08-30 00:35:14.000000000 -0400
++++ StepMania-3.9-src/src/GameState.h	2006-12-01 18:55:16.000000000 -0500
+@@ -85,8 +85,8 @@
+ 	bool AnyPlayersAreCpu() const;
+ 
+ 	void GetCharacters( vector<Character*> &apCharactersOut );
+-	Character* GameState::GetRandomCharacter();
+-	Character* GameState::GetDefaultCharacter();
++	Character* GetRandomCharacter();
++	Character* GetDefaultCharacter();
+ 
+ 	PlayerController	m_PlayerController[NUM_PLAYERS];
+ 	
+--- StepMania-3.9-src/src/NetworkSyncServer.h.extraqual	2005-10-16 22:31:11.000000000 -0400
++++ StepMania-3.9-src/src/NetworkSyncServer.h	2006-12-01 19:54:29.000000000 -0500
+@@ -117,7 +117,7 @@
+ 	void GameOver(PacketFunctions& Packet, const unsigned int clientNum);
+ 	void ScreenNetMusicSelectStatus(PacketFunctions& Packet, const unsigned int clientNum);
+ 	void AnalizeChat(PacketFunctions &Packet, const unsigned int clientNum);
+-	CString StepManiaLanServer::ListPlayers();
++	CString ListPlayers();
+ 	void Kick(CString &name);
+ 	void Ban(CString &name);
+ 	bool IsBanned(CString &ip);
+--- StepMania-3.9-src/src/RageUtil_FileDB.h.extraqual	2004-09-05 00:12:42.000000000 -0400
++++ StepMania-3.9-src/src/RageUtil_FileDB.h	2006-12-01 20:15:26.000000000 -0500
+@@ -86,9 +86,9 @@
+ 	virtual void PopulateFileSet( FileSet &fs, const CString &sPath ) { }
+ 
+ public:
+-	FilenameDB::FilenameDB():
++	FilenameDB():
+ 		ExpireSeconds( -1 ) { }
+-	virtual FilenameDB::~FilenameDB() { FlushDirCache(); }
++	virtual ~FilenameDB() { FlushDirCache(); }
+ 
+ 	void AddFile( const CString &sPath, int size, int hash, void *priv=NULL );
+ 	void DelFile( const CString &sPath );
