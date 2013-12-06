@@ -31,12 +31,12 @@ Patch13:	stepmania-3.9-gcc43.patch
 Patch14:	stepmania-3.9-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  ffmpeg-devel
-BuildRequires:  oggvorbis-devel
+BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  jpeg-devel
-BuildRequires:  SDL-devel
-BuildRequires:  lua5.0-devel
-BuildRequires:	gtk2-devel
-BuildRequires:	MesaGLU-devel
+BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(lua)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(glu)
 %if %{build_mp3}
 BuildRequires:	mad-devel
 %endif
