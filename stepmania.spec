@@ -76,7 +76,7 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 
 %build
 export CFLAGS="%{optflags} -O1"
-export CXXFLAGS="%{optflags} -O1"
+export CXXFLAGS="%{optflags} -O1 -fpermissive"
 %configure2_5x \
   --disable-dependency-tracking \
   --bindir=%{_gamesbindir} \
