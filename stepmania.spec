@@ -34,7 +34,7 @@ BuildRequires:  ffmpeg-devel
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  jpeg-devel
 BuildRequires:  pkgconfig(sdl)
-BuildRequires:  pkgconfig(lua)
+BuildRequires:  lua5.0-devel
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(glu)
 %if %{build_mp3}
