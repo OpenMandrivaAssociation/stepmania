@@ -29,6 +29,10 @@ Patch11:	stepmania-3.9-ffmpeg-pixfmt.patch
 Patch12:	stepmania-3.9-select_style.patch
 Patch13:	stepmania-3.9-gcc43.patch
 Patch14:	stepmania-3.9-fix-str-fmt.patch
+Patch15:	stepmania-3.9-libpng15.patch
+Patch16:	stepmania-gcc46.patch
+Patch17:	stepmania-gcc47.patch
+
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  ffmpeg-devel
 BuildRequires:  pkgconfig(vorbis)
@@ -66,6 +70,9 @@ to ~/StepMania/Songs as user, or to /usr/share/StepMania/Songs as root.
 %patch12 -p1 -b .select-style
 %patch13 -p1 -b .gcc
 %patch14 -p1 -b .str
+%patch15 -p0 -b .libpng
+%patch16 -p1 -b .gcc
+%patch17 -p1 -b .gcc
 
 %build
 export CFLAGS="%{optflags} -O1"

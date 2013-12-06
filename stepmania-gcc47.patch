@@ -1,0 +1,10 @@
+--- StepMania-3.9-src/src/RageUtil_CircularBuffer.h~	2004-08-10 09:52:55.000000000 +0800
++++ StepMania-3.9-src/src/RageUtil_CircularBuffer.h	2012-12-12 14:29:35.067994328 +0800
+@@ -1,5 +1,7 @@
+ #ifndef RAGE_UTIL_CIRCULAR_BUFFER
+ #define RAGE_UTIL_CIRCULAR_BUFFER
++#include <unistd.h>
++#include <string.h>
+ 
+ /* Lock-free circular buffer.  This should be threadsafe if one thread is reading
+  * and another is writing. */

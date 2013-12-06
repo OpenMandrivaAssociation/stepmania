@@ -1,0 +1,20 @@
+--- StepMania-3.9-src/src/arch/InputHandler/InputHandler_Linux_Joystick.cpp.gcc	2004-05-16 05:59:40.000000000 +0800
++++ StepMania-3.9-src/src/arch/InputHandler/InputHandler_Linux_Joystick.cpp	2012-12-12 14:26:31.622787888 +0800
+@@ -7,6 +7,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ 
++#include <sys/stat.h>
+ #include <errno.h>
+ #include <sys/types.h>
+ #include <linux/joystick.h>
+--- StepMania-3.9-src/src/arch/MemoryCard/MemoryCardDriverThreaded_Linux.cpp.gcc	2012-12-12 14:26:31.000000000 +0800
++++ StepMania-3.9-src/src/arch/MemoryCard/MemoryCardDriverThreaded_Linux.cpp	2012-12-12 14:27:16.724068971 +0800
+@@ -14,6 +14,7 @@
+ #include <fcntl.h>
+ #include <fstream>
+ #include <dirent.h>
++#include <sys/stat.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <sys/poll.h>
