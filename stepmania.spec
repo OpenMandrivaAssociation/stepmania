@@ -1,7 +1,7 @@
 %define	distname	StepMania
 %define	name	stepmania
 %define	version	3.9
-%define release	14
+%define release	15
 
 %define build_mp3 1
 %{?_with_mp3: %global build_mp3 1}
@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  jpeg-devel
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  lua5.0-devel
-BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(glu)
 %if %{build_mp3}
 BuildRequires:	mad-devel
@@ -81,6 +80,7 @@ export CXXFLAGS="%{optflags} -O1 -fpermissive"
   --disable-dependency-tracking \
   --bindir=%{_gamesbindir} \
   --datadir=%{_gamesdatadir} \
+  --disable-gtktest --disable-gtk2 \
 %if %build_mp3
   --with-mp3
 %else
@@ -95,15 +95,11 @@ rm -rf %buildroot
 install -d -m 0755 -p $RPM_BUILD_ROOT%{_iconsdir}
 install -m 0644 %{_topdir}/BUILD/%{distname}-%{version}-src/src/%{distname}.xpm $RPM_BUILD_ROOT%{_iconsdir}/
 
-install -d -m 0755 -p $RPM_BUILD_ROOT%{_libdir}/%{distname}
-mv $RPM_BUILD_ROOT%{_gamesbindir}/GtkModule.so $RPM_BUILD_ROOT%{_libdir}/%{distname}/
-chmod 0644 $RPM_BUILD_ROOT%{_libdir}/%{distname}/GtkModule.so
-
 install -d -m 0755 -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
 [Desktop Entry]
 Type=Application
-Exec=soundwrapper %{_gamesbindir}/stepmania
+Exec=%{_gamesbindir}/stepmania
 Name=StepMania
 Comment=A rythm game
 Icon=%{distname}
@@ -127,6 +123,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc README-FIRST.html NEWS
 %defattr(-,root,root)
 %{_gamesbindir}/%{name}
-%{_libdir}/%{distname}/GtkModule.so
 %{_iconsdir}/%{distname}.xpm
 %{_datadir}/applications/mandriva-*.desktop
