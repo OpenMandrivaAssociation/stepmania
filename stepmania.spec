@@ -1,16 +1,13 @@
 %define	distname	StepMania
-%define	name	stepmania
-%define	version	3.9
-%define release	15
 
 %define build_mp3 1
 %{?_with_mp3: %global build_mp3 1}
 %{?_without_mp3: %global build_mp3 0}
 
 Summary:	A rythm game
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		stepmania
+Version:	3.9
+Release:	15
 License:	MIT
 Url:		http://www.stepmania.com/wiki/Downloads
 Group:		Games/Arcade
@@ -33,7 +30,6 @@ Patch15:	stepmania-3.9-libpng15.patch
 Patch16:	stepmania-gcc46.patch
 Patch17:	stepmania-gcc47.patch
 
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  ffmpeg-devel
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  jpeg-devel
@@ -90,13 +86,12 @@ export CXXFLAGS="%{optflags} -O1 -fpermissive"
 %make
 
 %install
-rm -rf %buildroot
 %makeinstall_std
-install -d -m 0755 -p $RPM_BUILD_ROOT%{_iconsdir}
-install -m 0644 %{_topdir}/BUILD/%{distname}-%{version}-src/src/%{distname}.xpm $RPM_BUILD_ROOT%{_iconsdir}/
+install -d -m 0755 -p %{buildroot}%{_iconsdir}
+install -m 0644 %{_topdir}/BUILD/%{distname}-%{version}-src/src/%{distname}.xpm %{buildroot}%{_iconsdir}/
 
-install -d -m 0755 -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+install -d -m 0755 -p %{buildroot}%{_datadir}/applications
+cat << EOF > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop
 [Desktop Entry]
 Type=Application
 Exec=%{_gamesbindir}/stepmania
@@ -107,21 +102,9 @@ Categories=Game;ArcadeGame;
 EOF
 
 %clean
-rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
 
 %files
 %doc README-FIRST.html NEWS
-%defattr(-,root,root)
 %{_gamesbindir}/%{name}
 %{_iconsdir}/%{distname}.xpm
 %{_datadir}/applications/mandriva-*.desktop
