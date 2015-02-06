@@ -7,7 +7,7 @@
 Summary:	A rythm game
 Name:		stepmania
 Version:	3.9
-Release:	15
+Release:	16
 License:	MIT
 Url:		http://www.stepmania.com/wiki/Downloads
 Group:		Games/Arcade
