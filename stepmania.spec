@@ -9,7 +9,7 @@ Name:		stepmania
 Version:	3.9
 Release:	16
 License:	MIT
-Url:		http://www.stepmania.com/wiki/Downloads
+Url:		https://www.stepmania.com/wiki/Downloads
 Group:		Games/Arcade
 Source0:	%{distname}-%{version}-src.tar.bz2
 Patch0:         StepMania-3.9-x86_64-build.patch
