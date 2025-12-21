@@ -30,6 +30,11 @@ Patch15:	stepmania-3.9-libpng15.patch
 Patch16:	stepmania-gcc46.patch
 Patch17:	stepmania-gcc47.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  ffmpeg-devel
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  jpeg-devel
